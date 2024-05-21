@@ -15,6 +15,7 @@ import csv
 import requests
 import sys
 
+def fetch_user_data():
 if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com/"
 
