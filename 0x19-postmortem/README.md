@@ -1,6 +1,6 @@
 0x19. Postmortem
 
-Postmortem: Nginx Web Server Underperformance
+When the server decides to take a coffee break during peak hours...
 
 * Issue summary
 
@@ -11,20 +11,20 @@ June 11, 2024,07:00 SAT - June 11, 2024,10:00 SAT
 There were a number of failed requests and the web application was down. The user experience got affected immensely as almost 62% of the users were  affected.
 
 >> Root cause:
-The root cause was the insufficient configuration of the Nginx server to handle increased load, compounded by a lack of adequate resource monitoring and scaling strategies.
+The root cause was the insufficient configuration of the Nginx server to handle increased load, compounded by a lack of adequate resource monitoring and scaling strategies. Talking about unexpected life triggers, wheww...
 
 * Timeline
 
-. 07:00 SAT - The monitoring tool detected that there was an increase in error rates and a slow response times.
+. 07:00 SAT - The monitoring tool quickly detected that there was an increase in error rates and a slow response times.
 . 07:10 SAT - The on-call software engineer began investigating the web server.
 . 07:18 SAT - The initial assumption was that the issue was due to backend service failure. Back end services were then checked and found to be operating perfectly.
 . 07:27 SAT - Ongoing investigation for Nginx web server.
-. 07:35 SAT - Contacted the network team to assist with diagnostics.
+. 07:35 SAT - Contacted the network team to assist with diagnostics. Scrutinizing the situation.
 . 08:00 SAT -  Discovered that Nginx was not properly configured to handle the current load due to insufficient worker processes and connections settings.
-. 08:35 SAT - After investigating Nginx web server adjustments were made to increase the worker processes and connections.
-. 08:55 SAT - Applied configuration changes and restarted the Nginx service.
-. 09:17 SAT - When the system restart after changes were implemented, there was a significant drop in error rates and improvement in response times.
-. 09:58 SAT - Incident resolved, normal operation restored.
+. 08:35 SAT - After investigating Nginx web server adjustments were made to increase the worker processes and connections. At least there was some progress here. (relief)
+. 08:55 SAT - Applied configuration changes and restarted the Nginx service. Now, what next? (Anticipating)
+. 09:17 SAT - When the system restart after changes were implemented, there was a significant drop in error rates and improvement in response times. 
+. 09:58 SAT - Incident resolved, normal operation restored. Applaud, finally!!
 
 * Root Cause and Resolution
 
@@ -52,4 +52,4 @@ To resolve the Nginx web server, the server was set to match the load requiremen
 3. Monitoring systems: Ensure monitors are in place to detect any issues and set up alerts to report if an issue arise.
 4. Solution: Investigate and implement possible solutions to cater for load requirements.
 5. Training: Train software engineers to be better equipped with the necessary skills to handle Nginx configurations.
-6. Documentation: Update internal documentation with the new configuration settings and best practices for load management.
+6. Documentation: Update internal documentation with the new configuration settings and best practices for load management. Documenting is upper case v important. Periodttt!
